@@ -5,6 +5,15 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
+
+const navItems = [
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Events", href: "/#events" },
+  { label: "Team", href: "/#team" },
+  { label: "Blogs", href: "/blogs" },
+]
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -32,13 +41,15 @@ export function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Image
-            src="/Rotaract SLIIT Logo.png"
-            alt="Rotaract SLIIT Logo"
-            width={120}
-            height={100}
-            className="h-16 w-auto object-contain"
-          />
+          <Link href="/" aria-label="Go to homepage">
+            <Image
+              src="/Rotaract SLIIT Logo.png"
+              alt="Rotaract SLIIT Logo"
+              width={120}
+              height={100}
+              className="h-16 w-auto object-contain"
+            />
+          </Link>
         </motion.div>
 
         {/* Desktop Navigation */}
@@ -48,15 +59,15 @@ export function Header() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {["About", "Projects", "Events", "Team"].map((item, i) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
               className="text-foreground/80 hover:text-primary transition-colors duration-300 relative group"
             >
-              {item}
+              {item.label}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </a>
+            </Link>
           ))}
           <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
             Join the Club
@@ -83,15 +94,15 @@ export function Header() {
           exit={{ opacity: 0, y: -10 }}
         >
           <div className="px-4 py-4 space-y-4">
-            {["About", "Projects", "Events", "Team"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
                 className="block text-foreground/80 hover:text-primary transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {item}
-              </a>
+                {item.label}
+              </Link>
             ))}
             <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">Join the Club</Button>
           </div>

@@ -3,6 +3,21 @@
 import { Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
+
+const quickLinks = [
+  { label: "About Us", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Events", href: "/#events" },
+  { label: "Blogs", href: "/blogs" },
+]
+
+const resourceLinks = [
+  { label: "Club History", href: "/history" },
+  { label: "Team", href: "/#team" },
+  { label: "Join Us", href: "mailto:info@rotaractsliit.com" },
+  { label: "Contact", href: "mailto:info@rotaractsliit.com" },
+]
 
 export function Footer() {
   const containerVariants = {
@@ -57,11 +72,11 @@ export function Footer() {
           <motion.div variants={itemVariants}>
             <h4 className="font-bold mb-4 text-foreground">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              {["About Us", "Projects", "Articles", "Blogs"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-foreground/70 hover:text-primary transition-colors duration-300">
-                    {link}
-                  </a>
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors duration-300">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -71,11 +86,11 @@ export function Footer() {
           <motion.div variants={itemVariants}>
             <h4 className="font-bold mb-4 text-foreground">Resources</h4>
             <ul className="space-y-2 text-sm">
-              {["Join Us", "Events", "Gallery", "Contact"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-foreground/70 hover:text-primary transition-colors duration-300">
-                    {link}
-                  </a>
+              {resourceLinks.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors duration-300">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

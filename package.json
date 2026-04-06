@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "cms:build": "npm --prefix cms run build",
+    "cms:dev": "npm --prefix cms run develop",
+    "cms:start": "npm --prefix cms run start",
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start"
