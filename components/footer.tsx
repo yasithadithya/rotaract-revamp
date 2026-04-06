@@ -6,8 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 
 const quickLinks = [
-  { label: "About Us", href: "/#about" },
-  { label: "Projects", href: "/#projects" },
+  { label: "About Us", href: "/about" },
+  { label: "Featured Blogs", href: "/#featured-blogs" },
   { label: "Events", href: "/#events" },
   { label: "Blogs", href: "/blogs" },
 ]

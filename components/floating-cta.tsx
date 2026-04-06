@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { RotaryWheel } from "@/components/rotary-wheel"
+import { ArrowUpRight } from "lucide-react"
 
 export function FloatingCTA() {
   return (
@@ -12,15 +12,13 @@ export function FloatingCTA() {
       transition={{ duration: 0.5, delay: 1 }}
     >
       <motion.button
-        className="w-16 h-16 rounded-full glassmorphic flex items-center justify-center text-primary cursor-pointer group relative"
+        className="w-16 h-16 rounded-full bg-accent text-accent-foreground shadow-lg shadow-primary/25 border border-primary/20 flex items-center justify-center cursor-pointer group relative"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
       >
-        <div className="w-12 h-12 text-primary">
-          <RotaryWheel animated={true} />
-        </div>
+        <ArrowUpRight className="w-6 h-6" />
 
         {/* Pulsing glow */}
         <motion.div
@@ -35,7 +33,7 @@ export function FloatingCTA() {
           initial={{ opacity: 0, y: 10 }}
           whileHover={{ opacity: 1, y: 0 }}
         >
-          Join the Club
+          Contact Us
         </motion.div>
       </motion.button>
     </motion.div>

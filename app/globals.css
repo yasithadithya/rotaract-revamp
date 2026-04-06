@@ -4,79 +4,81 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette for premium glassmorphic design */
-  --background: #0f172a;
-  --foreground: #ffffff;
-  --card: rgba(15, 23, 42, 0.7);
-  --card-foreground: #ffffff;
-  --popover: rgba(15, 23, 42, 0.8);
-  --popover-foreground: #ffffff;
-  --primary: #06b6d4;
-  --primary-foreground: #0f172a;
-  --secondary: #0e7490;
-  --secondary-foreground: #ffffff;
-  --muted: rgba(255, 255, 255, 0.1);
-  --muted-foreground: rgba(255, 255, 255, 0.6);
-  --accent: #fbbf24;
-  --accent-foreground: #0f172a;
-  --destructive: #ef4444;
+  --site-primary-color: #ffffff;
+  --year-theme-color: #042ea2;
+
+  --background: var(--site-primary-color);
+  --foreground: #0f172a;
+  --card: rgba(255, 255, 255, 0.86);
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: var(--year-theme-color);
+  --primary-foreground: #ffffff;
+  --secondary: #eaf1ff;
+  --secondary-foreground: #0f172a;
+  --muted: #eef3ff;
+  --muted-foreground: #4b5563;
+  --accent: var(--year-theme-color);
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --border: rgba(6, 182, 212, 0.2);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #06b6d4;
-  --chart-1: #06b6d4;
-  --chart-2: #fbbf24;
-  --chart-3: #0e7490;
-  --chart-4: #06b6d4;
-  --chart-5: #fbbf24;
+  --border: rgba(37, 99, 235, 0.2);
+  --input: rgba(37, 99, 235, 0.08);
+  --ring: var(--year-theme-color);
+  --chart-1: #2563eb;
+  --chart-2: #1d4ed8;
+  --chart-3: #60a5fa;
+  --chart-4: #3b82f6;
+  --chart-5: #1e40af;
   --radius: 0.625rem;
-  --sidebar: rgba(15, 23, 42, 0.7);
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #06b6d4;
-  --sidebar-primary-foreground: #0f172a;
-  --sidebar-accent: #fbbf24;
-  --sidebar-accent-foreground: #0f172a;
-  --sidebar-border: rgba(6, 182, 212, 0.2);
-  --sidebar-ring: #06b6d4;
+  --sidebar: rgba(255, 255, 255, 0.95);
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: var(--year-theme-color);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dbeafe;
+  --sidebar-accent-foreground: #1e3a8a;
+  --sidebar-border: rgba(37, 99, 235, 0.2);
+  --sidebar-ring: var(--year-theme-color);
 }
 
 .dark {
-  --background: #0f172a;
-  --foreground: #ffffff;
-  --card: rgba(15, 23, 42, 0.7);
-  --card-foreground: #ffffff;
-  --popover: rgba(15, 23, 42, 0.8);
-  --popover-foreground: #ffffff;
-  --primary: #06b6d4;
-  --primary-foreground: #0f172a;
-  --secondary: #0e7490;
-  --secondary-foreground: #ffffff;
-  --muted: rgba(255, 255, 255, 0.1);
-  --muted-foreground: rgba(255, 255, 255, 0.6);
-  --accent: #fbbf24;
-  --accent-foreground: #0f172a;
-  --destructive: #ef4444;
+  --background: var(--site-primary-color);
+  --foreground: #0f172a;
+  --card: rgba(255, 255, 255, 0.86);
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: var(--year-theme-color);
+  --primary-foreground: #ffffff;
+  --secondary: #eaf1ff;
+  --secondary-foreground: #0f172a;
+  --muted: #eef3ff;
+  --muted-foreground: #4b5563;
+  --accent: var(--year-theme-color);
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --border: rgba(6, 182, 212, 0.2);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #06b6d4;
-  --chart-1: #06b6d4;
-  --chart-2: #fbbf24;
-  --chart-3: #0e7490;
-  --chart-4: #06b6d4;
-  --chart-5: #fbbf24;
-  --sidebar: rgba(15, 23, 42, 0.7);
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #06b6d4;
-  --sidebar-primary-foreground: #0f172a;
-  --sidebar-accent: #fbbf24;
-  --sidebar-accent-foreground: #0f172a;
-  --sidebar-border: rgba(6, 182, 212, 0.2);
-  --sidebar-ring: #06b6d4;
+  --border: rgba(37, 99, 235, 0.2);
+  --input: rgba(37, 99, 235, 0.08);
+  --ring: var(--year-theme-color);
+  --chart-1: #2563eb;
+  --chart-2: #1d4ed8;
+  --chart-3: #60a5fa;
+  --chart-4: #3b82f6;
+  --chart-5: #1e40af;
+  --sidebar: rgba(255, 255, 255, 0.95);
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: var(--year-theme-color);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dbeafe;
+  --sidebar-accent-foreground: #1e3a8a;
+  --sidebar-border: rgba(37, 99, 235, 0.2);
+  --sidebar-ring: var(--year-theme-color);
 }
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --font-sans: var(--font-lexend), "Avenir Next", "Futura", "Century Gothic", "Segoe UI", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -121,16 +123,19 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 45%),
+      radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.08), transparent 50%);
   }
 
   /* Added glassmorphic and premium animation styles */
   @keyframes glow {
     0%,
     100% {
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
     }
     50% {
-      box-shadow: 0 0 40px rgba(6, 182, 212, 0.6);
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.6);
     }
   }
 
@@ -151,15 +156,6 @@
     }
     50% {
       opacity: 0.7;
-    }
-  }
-
-  @keyframes rotate-wheel {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
     }
   }
 
@@ -186,24 +182,20 @@
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
-  .rotate-wheel {
-    animation: rotate-wheel 20s linear infinite;
-  }
-
   .text-reveal {
     animation: text-reveal 1.5s ease-out;
   }
 
   .glassmorphic {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(6, 182, 212, 0.2);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(37, 99, 235, 0.16);
   }
 
   .glassmorphic-light {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(6, 182, 212, 0.15);
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(37, 99, 235, 0.14);
   }
 }
 
@@ -220,7 +212,7 @@
     left: 0;
     width: 100%;
     height: 80px;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="%230f172a" opacity="1"/></svg>')
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="%23ffffff" opacity="1"/></svg>')
       repeat-x;
     background-size: 600px 120px;
   }

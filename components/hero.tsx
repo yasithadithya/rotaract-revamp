@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
-import { RotaryWheel } from "@/components/rotary-wheel"
 
 export function Hero() {
   const containerVariants = {
@@ -42,21 +41,12 @@ export function Hero() {
         />
       </div>
 
-      {/* 3D Rotating Rotary Wheel */}
-      <motion.div
-        className="absolute top-1/2 right-1/4 w-64 h-64 text-primary/60 pointer-events-none"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-      >
-        <RotaryWheel animated={false} />
-      </motion.div>
-
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         <motion.div variants={containerVariants} initial="hidden" animate="visible">
           {/* Tagline */}
           <motion.div variants={itemVariants} className="mb-6">
             <span className="inline-block px-4 py-2 glassmorphic-light rounded-full text-sm font-semibold text-primary mb-6">
-              ✨ Impact Through Action
+              Impact Through Action
             </span>
           </motion.div>
 

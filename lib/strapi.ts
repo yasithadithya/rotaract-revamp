@@ -18,9 +18,12 @@ export type BlogPost = {
   content: string
   publishedAt: string | null
   authorName: string | null
+  featured: boolean
   coverImageUrl: string | null
   coverImageAlt: string
 }
+
+const BLOG_FIELDS = ["title", "slug", "excerpt", "content", "publishedAt", "createdAt", "updatedAt", "authorName", "featured"] as const
 
 function isRecord(value: unknown): value is UnknownRecord {
   return typeof value === "object" && value !== null
@@ -33,6 +36,33 @@ function asString(value: unknown): string | null {
 
   const trimmed = value.trim()
   return trimmed.length > 0 ? trimmed : null
+}
+
+function asBoolean(value: unknown): boolean | null {
+  if (typeof value === "boolean") {
+    return value
+  }
+
+  if (typeof value !== "string") {
+    return null
+  }
+
+  const normalized = value.trim().toLowerCase()
+  if (normalized === "true") {
+    return true
+  }
+
+  if (normalized === "false") {
+    return false
+  }
+
+  return null
+}
+
+function appendBlogFields(params: URLSearchParams): void {
+  BLOG_FIELDS.forEach((field, index) => {
+    params.set(`fields[${index}]`, field)
+  })
 }
 
 function normalizeEntry(entry: unknown): UnknownRecord | null {
@@ -229,6 +259,7 @@ function mapBlogPost(entry: unknown): BlogPost | null {
     content,
     publishedAt,
     authorName: extractAuthorName(normalizedEntry),
+    featured: asBoolean(normalizedEntry.featured) ?? false,
     coverImageUrl: url,
     coverImageAlt: alt,
   }
@@ -266,14 +297,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   const params = new URLSearchParams()
   params.set("sort[0]", "publishedAt:desc")
   params.set("pagination[pageSize]", "24")
-  params.set("fields[0]", "title")
-  params.set("fields[1]", "slug")
-  params.set("fields[2]", "excerpt")
-  params.set("fields[3]", "content")
-  params.set("fields[4]", "publishedAt")
-  params.set("fields[5]", "createdAt")
-  params.set("fields[6]", "updatedAt")
-  params.set("fields[7]", "authorName")
+  appendBlogFields(params)
   params.set("populate", "coverImage")
 
   try {
@@ -286,6 +310,53 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
+export async function getFeaturedBlogPosts(limit = 4): Promise<BlogPost[]> {
+  if (!STRAPI_BASE_URL) {
+    return []
+  }
+
+  const normalizedLimit = Number.isFinite(limit) && limit > 0 ? Math.floor(limit) : 4
+
+  const params = new URLSearchParams()
+  params.set("sort[0]", "publishedAt:desc")
+  params.set("pagination[pageSize]", String(normalizedLimit))
+  params.set("filters[featured][$eq]", "true")
+  appendBlogFields(params)
+  params.set("populate", "coverImage")
+
+  try {
+    const response = await fetchFromStrapi<StrapiCollectionResponse<unknown>>(`/blogs?${params.toString()}`)
+
+    return response.data.map((entry) => mapBlogPost(entry)).filter((post): post is BlogPost => post !== null)
+  } catch (error) {
+    console.error("Unable to fetch featured blog posts from Strapi.", error)
+    return []
+  }
+}
+
+export async function getNewestBlogPosts(limit = 4): Promise<BlogPost[]> {
+  if (!STRAPI_BASE_URL) {
+    return []
+  }
+
+  const normalizedLimit = Number.isFinite(limit) && limit > 0 ? Math.floor(limit) : 4
+
+  const params = new URLSearchParams()
+  params.set("sort[0]", "publishedAt:desc")
+  params.set("pagination[pageSize]", String(normalizedLimit))
+  appendBlogFields(params)
+  params.set("populate", "coverImage")
+
+  try {
+    const response = await fetchFromStrapi<StrapiCollectionResponse<unknown>>(`/blogs?${params.toString()}`)
+
+    return response.data.map((entry) => mapBlogPost(entry)).filter((post): post is BlogPost => post !== null)
+  } catch (error) {
+    console.error("Unable to fetch newest blog posts from Strapi.", error)
+    return []
+  }
+}
+
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   if (!STRAPI_BASE_URL) {
     return null
@@ -294,14 +365,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
   const params = new URLSearchParams()
   params.set("filters[slug][$eq]", slug)
   params.set("pagination[pageSize]", "1")
-  params.set("fields[0]", "title")
-  params.set("fields[1]", "slug")
-  params.set("fields[2]", "excerpt")
-  params.set("fields[3]", "content")
-  params.set("fields[4]", "publishedAt")
-  params.set("fields[5]", "createdAt")
-  params.set("fields[6]", "updatedAt")
-  params.set("fields[7]", "authorName")
+  appendBlogFields(params)
   params.set("populate", "coverImage")
 
   try {

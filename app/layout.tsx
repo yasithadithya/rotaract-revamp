@@ -1,11 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk, Inter } from "next/font/google"
+import { Lexend } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { ThemeLayout } from "./theme-layout"
 import "./globals.css"
 
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend" })
 
 export const metadata: Metadata = {
   title: "Rotaract Club of SLIIT - Impact Through Action",
@@ -22,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${lexend.variable} font-sans antialiased bg-background text-foreground`}
       >
-        {children}
-        <Analytics />
+        <ThemeLayout>
+          {children}
+          <Analytics />
+        </ThemeLayout>
       </body>
     </html>
   )

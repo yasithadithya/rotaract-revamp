@@ -29,6 +29,10 @@
     "authorName": {
       "type": "string"
     },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
     "coverImage": {
       "type": "media",
       "multiple": true,

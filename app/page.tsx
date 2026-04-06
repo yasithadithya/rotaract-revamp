@@ -1,22 +1,21 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { Mission } from "@/components/mission"
-import { Projects } from "@/components/projects"
+import { HomeBlogs } from "@/components/home-blogs"
 import { Events } from "@/components/events"
-import { Team } from "@/components/team"
 import { CTA } from "@/components/cta"
 import { Footer } from "@/components/footer"
 import { FloatingCTA } from "@/components/floating-cta"
+import { getFeaturedBlogPosts, getNewestBlogPosts, isStrapiConfigured } from "@/lib/strapi"
 
-export default function Home() {
+export default async function Home() {
+  const [featuredBlogs, newestBlogs] = await Promise.all([getFeaturedBlogPosts(4), getNewestBlogPosts(4)])
+
   return (
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <Mission />
-      <Projects />
+      <HomeBlogs featuredPosts={featuredBlogs} newestPosts={newestBlogs} isStrapiConfigured={isStrapiConfigured()} />
       <Events />
-      <Team />
       <CTA />
       <Footer />
       <FloatingCTA />

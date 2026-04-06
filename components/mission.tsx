@@ -1,20 +1,27 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Handshake, Sparkles, Sprout, type LucideIcon } from "lucide-react"
 
-const missionValues = [
+type MissionValue = {
+  icon: LucideIcon
+  title: string
+  description: string
+}
+
+const missionValues: MissionValue[] = [
   {
-    icon: "🤝",
+    icon: Handshake,
     title: "Community",
     description: "Building stronger communities through collective action and shared values.",
   },
   {
-    icon: "✨",
+    icon: Sparkles,
     title: "Inspiration",
     description: "Inspiring youth to lead, innovate, and create positive change in society.",
   },
   {
-    icon: "🌱",
+    icon: Sprout,
     title: "Growth",
     description: "Fostering personal and professional development through service and leadership.",
   },
@@ -96,14 +103,14 @@ export function Mission() {
               key={index}
               variants={itemVariants}
               className="glassmorphic rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group"
-              whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(6, 182, 212, 0.1)" }}
+              whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(37, 99, 235, 0.12)" }}
             >
               <motion.div
-                className="text-5xl mb-4 inline-block"
+                className="w-12 h-12 mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 text-primary"
                 whileHover={{ scale: 1.2, rotate: 10 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                {value.icon}
+                <value.icon className="w-6 h-6" />
               </motion.div>
               <h3 className="font-bold text-xl text-foreground mb-3">{value.title}</h3>
               <p className="text-foreground/70 leading-relaxed">{value.description}</p>
