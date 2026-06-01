@@ -4,11 +4,13 @@ import { notFound } from "next/navigation"
 import { ArrowLeft, CalendarDays, UserRound } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { getBlogPostBySlug } from "@/lib/strapi"
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/strapi"
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>
 }
+
+export const dynamicParams = false
 
 const dateFormatter = new Intl.DateTimeFormat("en-LK", {
   year: "numeric",
@@ -51,6 +53,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: `${post.title} - Rotaract SLIIT`,
     description: post.excerpt,
   }
+}
+
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+  const posts = await getBlogPosts()
+
+  return posts.map((post) => ({ slug: post.slug }))
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

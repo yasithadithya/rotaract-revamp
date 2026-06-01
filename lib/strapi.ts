@@ -1,9 +1,6 @@
 const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL?.replace(/\/$/, "")
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN
 
-const REVALIDATE_SECONDS = Number(process.env.STRAPI_REVALIDATE_SECONDS ?? "120")
-const DEFAULT_REVALIDATE = Number.isFinite(REVALIDATE_SECONDS) ? REVALIDATE_SECONDS : 120
-
 type UnknownRecord = Record<string, unknown>
 
 type StrapiCollectionResponse<T> = {
@@ -275,7 +272,6 @@ async function fetchFromStrapi<T>(path: string): Promise<T> {
       Accept: "application/json",
       ...(STRAPI_API_TOKEN ? { Authorization: `Bearer ${STRAPI_API_TOKEN}` } : {}),
     },
-    next: { revalidate: DEFAULT_REVALIDATE },
   })
 
   if (!response.ok) {
