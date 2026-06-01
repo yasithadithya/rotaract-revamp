@@ -16,6 +16,7 @@ type NavItem = {
   label: string
   href: string
   children?: NavChild[]
+  external?: boolean
 }
 
 const navItems: NavItem[] = [
@@ -27,7 +28,7 @@ const navItems: NavItem[] = [
   // { label: "Featured Blogs", href: "/#featured-blogs" },
   { label: "Events", href: "/#events" },
   // { label: "Team", href: "/#team" },
-  { label: "Blogs", href: "/blogs" },
+  { label: "Blogs", href: "https://rotaractsliit.com/blogs/", external: true },
   { label: "Contact Us", href: "/contact" },
 ]
 
@@ -86,6 +87,19 @@ export function Header() {
             const hasChildren = Boolean(item.children?.length)
 
             if (!hasChildren) {
+              if (item.external) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="text-foreground/80 hover:text-primary transition-colors duration-300 relative group"
+                  >
+                    {item.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                  </a>
+                )
+              }
+
               return (
                 <Link
                   key={item.label}
@@ -154,6 +168,19 @@ export function Header() {
               const isDropdownOpen = openMobileDropdown === item.label
 
               if (!hasChildren) {
+                if (item.external) {
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="block text-foreground/80 hover:text-primary transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  )
+                }
+
                 return (
                   <Link
                     key={item.label}

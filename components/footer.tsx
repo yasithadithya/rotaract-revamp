@@ -7,9 +7,8 @@ import Link from "next/link"
 
 const quickLinks = [
   { label: "About Us", href: "/about" },
-  { label: "Featured Blogs", href: "/#featured-blogs" },
   { label: "Events", href: "/#events" },
-  { label: "Blogs", href: "/blogs" },
+  { label: "Blogs", href: "https://rotaractsliit.com/blogs/", external: true },
 ]
 
 const resourceLinks = [
@@ -74,9 +73,18 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors duration-300">
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      className="text-foreground/70 hover:text-primary transition-colors duration-300"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className="text-foreground/70 hover:text-primary transition-colors duration-300">
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
