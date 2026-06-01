@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer"
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/strapi"
 
 type BlogPostPageProps = {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }
 
 export const dynamicParams = false
@@ -39,7 +39,7 @@ function toParagraphs(content: string): string[] {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const { slug } = await params
+  const { slug } = params
   const post = await getBlogPostBySlug(slug)
 
   if (!post) {
@@ -62,7 +62,7 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params
+  const { slug } = params
   const post = await getBlogPostBySlug(slug)
 
   if (!post) {
