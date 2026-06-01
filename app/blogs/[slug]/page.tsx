@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { ArrowLeft, CalendarDays, UserRound } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { getBlogPostBySlug, getBlogPosts } from "@/lib/strapi"
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog-data"
 
 type BlogPostPageProps = {
   params: { slug: string }
@@ -38,9 +38,9 @@ function toParagraphs(content: string): string[] {
     .filter(Boolean)
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export function generateMetadata({ params }: BlogPostPageProps): Metadata {
   const { slug } = params
-  const post = await getBlogPostBySlug(slug)
+  const post = getBlogPostBySlug(slug)
 
   if (!post) {
     return {
@@ -55,15 +55,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 }
 
-export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
-  const posts = await getBlogPosts()
+export function generateStaticParams(): Array<{ slug: string }> {
+  const posts = getBlogPosts()
 
   return posts.map((post) => ({ slug: post.slug }))
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = params
-  const post = await getBlogPostBySlug(slug)
+  const post = getBlogPostBySlug(slug)
 
   if (!post) {
     notFound()

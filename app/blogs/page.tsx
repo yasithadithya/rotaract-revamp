@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowRight, CalendarDays, UserRound } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { getBlogPosts, isStrapiConfigured } from "@/lib/strapi"
+import { getBlogPosts } from "@/lib/blog-data"
 
 export const metadata = {
   title: "Blogs - Rotaract SLIIT",
@@ -28,9 +28,8 @@ function formatPublishedDate(value: string | null): string {
   return dateFormatter.format(date)
 }
 
-export default async function BlogsPage() {
-  const posts = await getBlogPosts()
-  const isConfigured = isStrapiConfigured()
+export default function BlogsPage() {
+  const posts = getBlogPosts()
 
   return (
     <main className="min-h-screen">
@@ -45,8 +44,7 @@ export default async function BlogsPage() {
             <span className="text-primary"> Events, and Community Impact</span>
           </h1>
           <p className="max-w-3xl text-lg text-foreground/75 leading-relaxed">
-            This blog is connected to Strapi, so your marketing team can publish and update posts from a simple content
-            dashboard.
+            Explore stories, project updates, and member highlights from Rotaract Club of SLIIT.
           </p>
         </div>
       </section>
@@ -103,9 +101,7 @@ export default async function BlogsPage() {
             <div className="glassmorphic-light rounded-2xl border border-border/70 p-8 md:p-12 text-center max-w-3xl mx-auto">
               <h2 className="text-2xl font-bold mb-3">No blog posts yet</h2>
               <p className="text-foreground/75 leading-relaxed">
-                {isConfigured
-                  ? "Strapi is connected. Publish your first blog in Strapi and it will appear here automatically."
-                  : "Connect Strapi first by adding NEXT_PUBLIC_STRAPI_URL in your environment settings."}
+                Add entries to the local blog data to publish updates and stories here.
               </p>
             </div>
           )}

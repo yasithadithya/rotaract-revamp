@@ -1,11 +1,10 @@
 import Link from "next/link"
 import { ArrowRight, CalendarDays, Star } from "lucide-react"
-import type { BlogPost } from "@/lib/strapi"
+import type { BlogPost } from "@/lib/blog-data"
 
 type HomeBlogsProps = {
   featuredPosts: BlogPost[]
   newestPosts: BlogPost[]
-  isStrapiConfigured: boolean
 }
 
 const dateFormatter = new Intl.DateTimeFormat("en-LK", {
@@ -64,7 +63,7 @@ function EmptyState({ text }: { text: string }) {
   )
 }
 
-export function HomeBlogs({ featuredPosts, newestPosts, isStrapiConfigured }: HomeBlogsProps) {
+export function HomeBlogs({ featuredPosts, newestPosts }: HomeBlogsProps) {
   const featured = featuredPosts.slice(0, 4)
   const newest = newestPosts.slice(0, 4)
 
@@ -80,6 +79,7 @@ export function HomeBlogs({ featuredPosts, newestPosts, isStrapiConfigured }: Ho
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Featured and Newest Blogs</h2>
           <p className="text-foreground/75 leading-relaxed">
+            Highlights from our service projects, events, and member stories.
           </p>
         </div>
 
@@ -101,9 +101,7 @@ export function HomeBlogs({ featuredPosts, newestPosts, isStrapiConfigured }: Ho
           ) : (
             <EmptyState
               text={
-                isStrapiConfigured
-                  ? "No featured blogs yet. Mark a blog as featured in the CMS to show it here."
-                  : "Connect Strapi with NEXT_PUBLIC_STRAPI_URL to load featured blogs."
+                "No featured blogs yet. Add featured posts to highlight them here."
               }
             />
           )}
@@ -127,9 +125,7 @@ export function HomeBlogs({ featuredPosts, newestPosts, isStrapiConfigured }: Ho
           ) : (
             <EmptyState
               text={
-                isStrapiConfigured
-                  ? "No newest blogs available yet. Publish posts in Strapi and they will appear here."
-                  : "Connect Strapi with NEXT_PUBLIC_STRAPI_URL to load newest blogs."
+                "No blog posts yet. Add entries to the local blog data to show them here."
               }
             />
           )}
