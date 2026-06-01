@@ -5,7 +5,7 @@
 
 :root {
   --site-primary-color: #ffffff;
-  --year-theme-color: #042ea2;
+  --year-theme-color: #d91b5c;
 
   --background: var(--site-primary-color);
   --foreground: #0f172a;
@@ -13,68 +13,68 @@
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: var(--year-theme-color);
+  --primary: #d91b5c; /* Rotaract Cranberry */
   --primary-foreground: #ffffff;
-  --secondary: #eaf1ff;
-  --secondary-foreground: #0f172a;
-  --muted: #eef3ff;
-  --muted-foreground: #4b5563;
-  --accent: var(--year-theme-color);
-  --accent-foreground: #ffffff;
+  --secondary: #005aa3; /* Rotary Blue */
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f7a81b; /* Rotary Gold */
+  --accent-foreground: #0f172a;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --border: rgba(37, 99, 235, 0.2);
-  --input: rgba(37, 99, 235, 0.08);
-  --ring: var(--year-theme-color);
-  --chart-1: #2563eb;
-  --chart-2: #1d4ed8;
-  --chart-3: #60a5fa;
-  --chart-4: #3b82f6;
-  --chart-5: #1e40af;
-  --radius: 0.625rem;
+  --border: rgba(217, 27, 92, 0.2);
+  --input: rgba(217, 27, 92, 0.08);
+  --ring: var(--primary);
+  --chart-1: #d91b5c;
+  --chart-2: #005aa3;
+  --chart-3: #f7a81b;
+  --chart-4: #e11d48;
+  --chart-5: #1d4ed8;
+  --radius: 0.75rem;
   --sidebar: rgba(255, 255, 255, 0.95);
   --sidebar-foreground: #0f172a;
-  --sidebar-primary: var(--year-theme-color);
+  --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #dbeafe;
-  --sidebar-accent-foreground: #1e3a8a;
-  --sidebar-border: rgba(37, 99, 235, 0.2);
-  --sidebar-ring: var(--year-theme-color);
+  --sidebar-accent: rgba(217, 27, 92, 0.1);
+  --sidebar-accent-foreground: var(--primary);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 .dark {
-  --background: var(--site-primary-color);
-  --foreground: #0f172a;
-  --card: rgba(255, 255, 255, 0.86);
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: var(--year-theme-color);
+  --background: #09090b;
+  --foreground: #f8fafc;
+  --card: rgba(15, 23, 42, 0.6);
+  --card-foreground: #f8fafc;
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+  --primary: #d91b5c;
   --primary-foreground: #ffffff;
-  --secondary: #eaf1ff;
-  --secondary-foreground: #0f172a;
-  --muted: #eef3ff;
-  --muted-foreground: #4b5563;
-  --accent: var(--year-theme-color);
-  --accent-foreground: #ffffff;
-  --destructive: #dc2626;
+  --secondary: #005aa3;
+  --secondary-foreground: #ffffff;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #f7a81b;
+  --accent-foreground: #09090b;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: rgba(37, 99, 235, 0.2);
-  --input: rgba(37, 99, 235, 0.08);
-  --ring: var(--year-theme-color);
-  --chart-1: #2563eb;
-  --chart-2: #1d4ed8;
-  --chart-3: #60a5fa;
-  --chart-4: #3b82f6;
-  --chart-5: #1e40af;
-  --sidebar: rgba(255, 255, 255, 0.95);
-  --sidebar-foreground: #0f172a;
-  --sidebar-primary: var(--year-theme-color);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: var(--primary);
+  --chart-1: #d91b5c;
+  --chart-2: #005aa3;
+  --chart-3: #f7a81b;
+  --chart-4: #e11d48;
+  --chart-5: #1d4ed8;
+  --sidebar: rgba(15, 23, 42, 0.95);
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #dbeafe;
-  --sidebar-accent-foreground: #1e3a8a;
-  --sidebar-border: rgba(37, 99, 235, 0.2);
-  --sidebar-ring: var(--year-theme-color);
+  --sidebar-accent: rgba(217, 27, 92, 0.2);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 @theme inline {
@@ -124,8 +124,14 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 45%),
-      radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.08), transparent 50%);
+      radial-gradient(circle at top right, rgba(217, 27, 92, 0.08), transparent 45%),
+      radial-gradient(circle at bottom left, rgba(247, 168, 27, 0.05), transparent 50%);
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at top right, rgba(217, 27, 92, 0.15), transparent 50%),
+      radial-gradient(circle at bottom left, rgba(0, 90, 163, 0.1), transparent 50%);
   }
 
   /* Added glassmorphic and premium animation styles */
@@ -188,14 +194,26 @@
 
   .glassmorphic {
     background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(37, 99, 235, 0.16);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .glassmorphic {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   }
 
   .glassmorphic-light {
     background: rgba(255, 255, 255, 0.62);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(37, 99, 235, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .dark .glassmorphic-light {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 

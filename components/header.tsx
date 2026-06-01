@@ -23,11 +23,13 @@ const navItems: NavItem[] = [
   {
     label: "About Us",
     href: "/about",
-    children: [{ label: "Club History", href: "/history" }],
+    children: [
+      { label: "Club History", href: "/history" },
+      { label: "Avenues of Service", href: "/avenues" }
+    ],
   },
-  // { label: "Featured Blogs", href: "/#featured-blogs" },
+  { label: "Projects", href: "/projects" },
   { label: "Events", href: "/#events" },
-  // { label: "Team", href: "/#team" },
   { label: "Blogs", href: "https://rotaractsliit.com/blogs/", external: true },
   { label: "Contact Us", href: "/contact" },
 ]

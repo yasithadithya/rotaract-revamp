@@ -43,13 +43,15 @@ function BlogCard({ post }: { post: BlogPost }) {
         <h3 className="text-xl font-bold mb-3 leading-snug line-clamp-2">{post.title}</h3>
         <p className="text-foreground/75 text-sm leading-relaxed flex-1 line-clamp-4">{post.excerpt}</p>
 
-        <Link
-          href={`/blogs/${post.slug}`}
+        <a
+          href={post.externalLink || `https://rotaractsliit.com/blogs/`}
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-6 inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
         >
           Read article
           <ArrowRight size={16} />
-        </Link>
+        </a>
       </div>
     </article>
   )
@@ -86,7 +88,7 @@ export function HomeBlogs({ featuredPosts, newestPosts }: HomeBlogsProps) {
         <div className="space-y-6">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <h3 className="text-2xl md:text-3xl font-bold">Featured Blogs</h3>
-            <Link href="/blogs" className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors">
+            <Link href="https://rotaractsliit.com/blogs/" className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors" target="_blank" rel="noopener noreferrer">
               View all blogs
               <ArrowRight size={16} />
             </Link>
@@ -110,7 +112,7 @@ export function HomeBlogs({ featuredPosts, newestPosts }: HomeBlogsProps) {
         <div className="space-y-6">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <h3 className="text-2xl md:text-3xl font-bold">Newest Blogs</h3>
-            <Link href="/blogs" className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors">
+            <Link href="https://rotaractsliit.com/blogs/" className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors" target="_blank" rel="noopener noreferrer">
               Browse archive
               <ArrowRight size={16} />
             </Link>
